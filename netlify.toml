@@ -3,15 +3,17 @@
   command = "npm run build"
   publish = "dist"
 
-# Serverless backend (Claude API). Requires the ANTHROPIC_API_KEY env var
-# to be set in the Netlify UI (Site settings -> Environment variables) or via
-# `netlify env:set ANTHROPIC_API_KEY <key>`.
+# Serverless backend (Claude API). Set ANTHROPIC_API_KEY in the Netlify UI
+# (Site settings -> Environment variables) or with `netlify env:set`.
+# Do not put the key in this file. The function rate limit lives in
+# netlify/functions/market-data.js (a path is required; toml cannot set it).
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
 # SPA fallback: serve index.html for client-side routes so deep links / refresh
-# don't 404. Netlify serves /.netlify/functions/* before this catch-all.
+# don't 404. The market-data function is mounted at /api/market-data by its
+# config.path, which Netlify matches before this catch-all.
 [[redirects]]
   from = "/*"
   to = "/index.html"

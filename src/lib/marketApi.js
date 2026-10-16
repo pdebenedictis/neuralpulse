@@ -1,7 +1,7 @@
 // Client for the standalone backend (Netlify function -> Claude API).
 // Replaces the old base44.integrations.Core.InvokeLLM calls.
 
-const ENDPOINT = "/.netlify/functions/market-data";
+const ENDPOINT = "/api/market-data";
 
 async function call(type, opts = {}) {
   const res = await fetch(`${ENDPOINT}?type=${type}`, opts);

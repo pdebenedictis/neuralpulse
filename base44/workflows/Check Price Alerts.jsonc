@@ -1,6 +1,6 @@
 {
   "name": "Check Price Alerts",
-  "description": "Checks active price alerts every 15 minutes and sends email notifications when targets are hit",
+  "description": "Checks active price alerts every 15 minutes and sends email notifications when targets are hit. The function runs only for an admin or for the scheduler. Set args.scheduler_token in the Base44 dashboard to the PRICE_ALERTS_SCHEDULER_SECRET value. Do not commit that secret.",
   "trigger": {
     "condition": null,
     "config": {
